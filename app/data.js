@@ -60,12 +60,13 @@ export const aiProjects = [
       ],
     },
     images: [
+      { src: img("kyrgyz-retrieval", "demo_search.png"), cap: { en: "Live demo: BGE-M3 ranks the correct passage first, BM25 ranks it 4th (900 Belebele questions: 0.841 vs 0.570 Accuracy@1)", ko: "데모: BGE-M3는 정답 문단을 1위, BM25는 4위로 찾음 (Belebele 900문항 Accuracy@1 0.841 vs 0.570)" } },
       { src: img("kyrgyz-retrieval", "result_belebele_finetuning.png"), cap: { en: "Fine-tuning on ~1.5k synthetic pairs: +18 pp on human-written questions", ko: "합성 데이터 약 1.5k쌍으로 파인튜닝: 사람이 쓴 질문에서 +18%p" } },
       { src: img("kyrgyz-retrieval", "architecture.png"), cap: { en: "Research pipeline", ko: "연구 파이프라인" } },
       { src: img("kyrgyz-retrieval", "result_eval_bug.png"), cap: { en: "Fixing the evaluation bug changed the conclusion", ko: "평가 버그 수정으로 결론이 바뀜" } },
       { src: img("kyrgyz-retrieval", "result_model_comparison.png"), cap: { en: "8 retrieval systems on Belebele", ko: "Belebele에서 8개 검색 시스템 비교" } },
     ],
-    links: [{ label: "GitHub", href: "https://github.com/askarbekkk/kyrgyz-embeddings" }],
+    links: [{ label: "GitHub", href: "https://github.com/askarbekkk/kyrgyz-embeddings" }, { label: "Demo code", href: "https://github.com/askarbekkk/kyrgyz-embeddings/tree/main/demo" }],
   },
   {
     slug: "motion-rag",
