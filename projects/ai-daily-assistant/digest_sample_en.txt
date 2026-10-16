@@ -1,0 +1,19 @@
+☀️ Morning digest · 17.10 01:56
+Backend, ML infrastructure, and open-source models update
+
+💼 Jobs
+• Data Scientist, Product Analytics (https://jobicy.com/jobs/150667-data-scientist-product-analytics) — Meta
+   Relevant data science role focusing on product analytics and core ML/data workflows.
+• AI Experience Engineer (Conversational AI) (https://weworkremotely.com/remote-jobs/upgrade-ai-experience-engineer-conversational-ai) — Upgrade
+   Involves conversational AI and full lifecycle engineering for backend-driven AI agents.
+
+🧠 AI news
+• Scaling Indic Pretraining: 2.8 Trillion Tokens and an Open Data Generation Pipeline (https://huggingface.co/blog/nvidia/scaling-indic-pretraining) — Hugging Face released data and pretraining pipelines for Indic languages, scaling up to 2.8 trillion tokens.
+• Welcome Beam: a 501B open model you can own, customize, and scale (https://huggingface.co/blog/reflection-beam) — Hugging Face introduced Beam, a new 501B open model designed for customization and scaling.
+• Granite Switch 4.1: Chat, Decisions, and Speech from One Endpoint (https://huggingface.co/blog/ibm-granite/granite-switch-4-1) — Granite Switch 4.1 launched, offering chat, decision-making, and speech capabilities from a single unified endpoint.
+• Средняя метрика скрывает провал редкого сегмента: проверяем ML-модель на срезах (https://habr.com/ru/companies/otus/articles/1091192/?utm_campaign=1091192&utm_source=habrahabr&utm_medium=rss) — An engineering post highlights the danger of relying solely on average ML metrics and demonstrates slice-based model evaluation.
+• Применение физически информированных нейронных сетей (PINN) в пучковых нейросетях на графах (https://habr.com/ru/companies/vk/articles/1095072/?utm_campaign=1095072&utm_source=habrahabr&utm_medium=rss) — A research study discusses applying physics-informed neural networks (PINNs) within graph neural networks.
+
+🎯 Focus: Review your slice-based evaluation strategies for ML models to catch hidden performance drops on rare data segments.
+
+--- 204 words (limit 800); dry run, nothing marked as seen

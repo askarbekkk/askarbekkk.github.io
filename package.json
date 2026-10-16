@@ -1,0 +1,14 @@
+{
+  "name": "askar-portfolio",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "^16.4.2",
+    "react": "19.1.1",
+    "react-dom": "19.1.1"
+  }
+}

@@ -1,0 +1,7 @@
+node_modules
+.next
+screens
+AGENTS.md
+CLAUDE.md
+.claude
+*.mmd
