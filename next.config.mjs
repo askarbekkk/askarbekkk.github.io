@@ -1,3 +1,3 @@
-const nextConfig = { agentRules: false };
+const nextConfig = { output: "export", agentRules: false };
 
 export default nextConfig;
