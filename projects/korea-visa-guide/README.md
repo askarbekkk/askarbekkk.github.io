@@ -15,15 +15,22 @@ A mobile app (Android, iOS and web from one codebase):
 
 ![Architecture](architecture.png)
 
+## Tool-calling agent
+The first bot only searched the web and answered "not in the sources" even when the app's own checklist had the answer. I rebuilt it as a Gemini function-calling agent with four tools: `search_app_guides`, `search_official_sources` (HiKorea, MOJ, MOFA), `calculate_deadline` and `get_exchange_rate`. Dates are computed by code, never by the model.
+
+**Evaluation:** 24 questions with checkable facts (RU/EN), same model for both systems. Previous bot 8–13%, agent 96–100% over three runs; the expected tool was chosen in 92–96% of questions. In the final run the only miss was a free-tier rate-limit error.
+
+![Agent](06_agent_deadline_fee.png)
+
 ## Demo (web build)
 | Onboarding | Dashboard | D-2 extension checklist | Bot |
 |---|---|---|---|
 | ![](01_onboarding_step2.png) | ![](02_dashboard.png) | ![](03_checklist_d2.png) | ![](04_bot_answer.png) |
 
-## What I fixed while preparing this demo
+## What I fixed along the way
 - The Gemini model name was pinned to `gemini-2.0-flash`, which Google retired (404). It now uses the `gemini-flash-latest` alias.
 - Added a fallback to `gemini-flash-lite-latest` when the main model is overloaded (429/503).
+- Raised the output-token limit after long answers came back empty, and switched answers to plain text because the chat showed raw Markdown.
 
 ## Next steps
-- The bot searches only the web; it should also read the app's own checklists (the D-2 extension answer is already there).
 - API keys are bundled into the client (`EXPO_PUBLIC_*`). Before a public release the LLM calls must go through a small server proxy.

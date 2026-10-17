@@ -102,6 +102,48 @@ export const aiProjects = [
     links: [],
   },
   {
+    slug: "korea-visa-guide",
+    badge: { en: "LLM agent · mobile app", ko: "LLM 에이전트 · 모바일 앱" },
+    title: { en: "Korea Visa Guide: tool-calling agent", ko: "Korea Visa Guide: 도구 호출 에이전트" },
+    tagline: {
+      en: "A visa assistant for foreigners in Korea that decides which tools to use: app guides, official-site search, a deadline calculator and exchange rates.",
+      ko: "가이드 검색, 공식 사이트 검색, 기한 계산, 환율 중 필요한 도구를 스스로 고르는 외국인용 비자 어시스턴트입니다.",
+    },
+    tags: ["Gemini function calling", "Agent", "Evaluation", "Expo / React Native", "TypeScript", "Tavily"],
+    results: [
+      { en: "Correct answers: 8–13% → 96–100% (24-question eval, 3 runs)", ko: "정답률 8–13% → 96–100% (24문항 평가, 3회)" },
+      { en: "Expected tool chosen in 92–96% of questions", ko: "92–96% 질문에서 올바른 도구 선택" },
+      { en: "Dates computed by code, never guessed by the model", ko: "날짜는 모델이 아닌 코드가 계산" },
+    ],
+    problem: {
+      en: "The first version of the bot only searched the web. On \"How do I extend a D-2 visa?\" it answered \"not in the sources\", although the app's own checklist had the answer; it also could not work out dates or convert fees.",
+      ko: "첫 번째 봇은 웹 검색만 했습니다. \"D-2 연장 방법\"을 물으면 앱 체크리스트에 답이 있는데도 \"자료에 없음\"이라고 답했고, 날짜 계산이나 수수료 환산도 하지 못했습니다.",
+    },
+    points: {
+      en: [
+        "Rebuilt the bot as a Gemini function-calling agent (up to 5 steps) with 4 tools: search_app_guides, search_official_sources (HiKorea, MOJ, MOFA), calculate_deadline and get_exchange_rate.",
+        "The model must base every fact on tool results; dates (extension window, 90-day ARC rule, 14-day address rule) come from code, not from the model.",
+        "Built a 24-question evaluation in Russian and English with checkable facts and compared the old bot and the agent on the same model: 8–13% vs 96–100% across three runs.",
+        "Found and fixed issues along the way: a retired Gemini model name, no fallback on overload, a token limit that cut long answers to empty, and Markdown showing as raw symbols in the chat.",
+        "Also: onboarding by country and visa, personal checklists with progress saved on the device, RU/EN interface.",
+      ],
+      ko: [
+        "봇을 Gemini 함수 호출 에이전트(최대 5단계)로 다시 만들었습니다. 도구는 4개입니다: 앱 가이드 검색, 공식 사이트 검색(하이코리아·법무부·외교부), 기한 계산, 환율 조회.",
+        "모든 사실은 도구 결과에 근거해야 하며, 날짜(연장 신청 기간, ARC 90일, 주소 변경 14일)는 모델이 아니라 코드가 계산합니다.",
+        "검증 가능한 사실이 담긴 러시아어·영어 24문항 평가셋을 만들어 같은 모델로 기존 봇과 에이전트를 비교했습니다: 3회 실행 기준 8–13% 대 96–100%.",
+        "개발 중 발견한 문제도 해결했습니다: 서비스 종료된 Gemini 모델명, 과부하 시 대체 로직 부재, 긴 답변을 빈 응답으로 만들던 토큰 한도, 채팅에 그대로 보이던 마크다운 기호.",
+        "그 외: 국가·비자별 온보딩, 기기에 저장되는 맞춤 체크리스트, 러시아어·영어 인터페이스.",
+      ],
+    },
+    images: [
+      { src: img("korea-visa-guide", "06_agent_deadline_fee.png"), cap: { en: "One question, three tools: deadline window, fee in Kyrgyz som, documents from the app's checklist", ko: "질문 하나에 도구 세 개: 신청 기간, 솜 환산 수수료, 체크리스트 서류" }, phone: true },
+      { src: img("korea-visa-guide", "architecture.png"), cap: { en: "Agent architecture", ko: "에이전트 아키텍처" } },
+      { src: img("korea-visa-guide", "03_checklist_d2.png"), cap: { en: "D-2 extension checklist", ko: "D-2 연장 체크리스트" }, phone: true },
+      { src: img("korea-visa-guide", "02_dashboard.png"), cap: { en: "Dashboard", ko: "대시보드" }, phone: true },
+    ],
+    links: [{ label: "GitHub", href: "https://github.com/askarbekkk/korea-visa-guide" }],
+  },
+  {
     slug: "offline-rag",
     badge: { en: "Client project", ko: "클라이언트 프로젝트" },
     title: { en: "Secure Offline RAG", ko: "보안 오프라인 RAG" },
@@ -368,43 +410,6 @@ export const aiProjects = [
 ];
 
 export const appProjects = [
-  {
-    slug: "korea-visa-guide",
-    badge: { en: "Mobile app · AI", ko: "모바일 앱 · AI" },
-    title: { en: "Korea Visa Guide", ko: "Korea Visa Guide 비자 가이드" },
-    tagline: {
-      en: "Personal visa checklists and an official-source Q&A bot for foreign students and workers in Korea.",
-      ko: "외국인 유학생·근로자를 위한 맞춤 비자 체크리스트와 공식 자료 기반 Q&A 봇.",
-    },
-    tags: ["Expo", "React Native", "TypeScript", "Tavily", "Gemini", "i18n"],
-    results: [
-      { en: "Checklists for D-2, D-10, E-7, F-4 and more", ko: "D-2, D-10, E-7, F-4 등 체크리스트" },
-      { en: "Answers with links to HiKorea and MOJ", ko: "하이코리아·법무부 출처 링크 제공" },
-      { en: "Android, iOS and web from one codebase", ko: "하나의 코드로 안드로이드·iOS·웹" },
-    ],
-    problem: {
-      en: "Visa rules live on HiKorea, mostly in Korean, and change over time. Newcomers do not know which documents they need or when to apply.",
-      ko: "비자 규정은 주로 한국어로 된 하이코리아에 있고 자주 바뀝니다. 새로 온 사람은 어떤 서류가 필요한지, 언제 신청해야 하는지 알기 어렵습니다.",
-    },
-    points: {
-      en: [
-        "Onboarding by country, visa and goal builds a personal list of procedures with progress saved on the device.",
-        "Korean-language searches refresh requirements from HiKorea; an LLM extracts documents and fees.",
-        "While preparing the demo I replaced a retired Gemini model name and added a fallback for overload errors.",
-      ],
-      ko: [
-        "국가, 비자, 목적을 고르면 맞춤 절차 목록이 만들어지고 진행 상황은 기기에 저장됩니다.",
-        "한국어 검색으로 하이코리아의 최신 요건을 가져오고 LLM이 서류와 수수료를 추출합니다.",
-        "데모 준비 중 서비스 종료된 Gemini 모델명을 교체하고 과부하 오류에 대비한 대체 로직을 추가했습니다.",
-      ],
-    },
-    images: [
-      { src: img("korea-visa-guide", "03_checklist_d2.png"), cap: { en: "D-2 extension checklist", ko: "D-2 연장 체크리스트" }, phone: true },
-      { src: img("korea-visa-guide", "02_dashboard.png"), cap: { en: "Dashboard", ko: "대시보드" }, phone: true },
-      { src: img("korea-visa-guide", "04_bot_answer.png"), cap: { en: "Q&A bot with sources", ko: "출처가 있는 Q&A 봇" }, phone: true },
-    ],
-    links: [{ label: "GitHub", href: "https://github.com/askarbekkk/korea-visa-guide" }],
-  },
   {
     slug: "currency-radar",
     badge: { en: "PWA + Android", ko: "PWA + 안드로이드" },
