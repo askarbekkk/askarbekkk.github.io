@@ -221,6 +221,49 @@ export const aiProjects = [
     links: [],
   },
   {
+    slug: "wiguard",
+    badge: { en: "Hardware prototype", ko: "하드웨어 프로토타입" },
+    title: { en: "WiGuard: camera-free room monitoring with WiFi + radar", ko: "WiGuard: WiFi + 레이더 비카메라 실내 모니터링" },
+    tagline: {
+      en: "Detects movement, presence and a person lying on the floor for older people living alone, using two ESP32 boards and a cheap radar. No camera, no cloud.",
+      ko: "ESP32 보드 2개와 저가 레이더로 독거 어르신의 움직임, 재실 여부, 바닥에 누운 상태를 감지합니다. 카메라도 클라우드도 쓰지 않습니다.",
+    },
+    tags: ["ESP32", "ESP-IDF (C)", "WiFi CSI", "mmWave radar", "Python", "NumPy", "Signal processing"],
+    results: [
+      { en: "Hardware cost about ₩45,000", ko: "하드웨어 비용 약 45,000원" },
+      { en: "Walking 2–4× above standing still in the WiFi signal", ko: "WiFi 신호에서 걷기가 정지 상태보다 2–4배 높음" },
+      { en: "Person lying on the floor: fingerprint 10.4 vs 4.2 for an empty room", ko: "바닥에 누운 사람: 지문 거리 10.4, 빈 방 4.2" },
+    ],
+    problem: {
+      en: "Older people who live alone in small rooms most often fall in the bathroom, where cameras are not acceptable and wearables get taken off. Camera-free radar products exist but cost hundreds of thousands of won plus a subscription. WiFi sensing is cheap, but on its own it cannot tell a person lying still from an empty room.",
+      ko: "작은 방에 혼자 사는 어르신은 주로 욕실에서 넘어지는데, 그곳에는 카메라를 둘 수 없고 웨어러블은 쉽게 벗어 둡니다. 카메라 없는 레이더 제품은 수십만 원에 구독료까지 듭니다. WiFi 센싱은 저렴하지만 그것만으로는 가만히 누운 사람과 빈 방을 구분하지 못합니다.",
+    },
+    points: {
+      en: [
+        "Two ESP32 boards send and receive WiFi packets through the room (~47 frames/s, ~120 subcarriers); the signal changes when a body moves through it.",
+        "A 9-frame median filter removes corrupted packets; a short empty-room calibration sets thresholds for each room.",
+        "Two WiFi features: motion (frame-to-frame change) and a fingerprint (distance from the empty-room pattern), which keeps information about a person who is not moving.",
+        "An LD2410C 24 GHz radar on a third board (my UART-to-USB bridge firmware) reports moving or still presence up to ~6 m and drives entered/left-the-room events.",
+        "Live web dashboard with calibration, event log and CSV recording; tools that record WiFi and camera together only to label data, never in deployment.",
+        "Status: motion, presence and left-the-room work; fall detection is still in progress and the fingerprint result comes from one session, so it is not validated yet.",
+      ],
+      ko: [
+        "ESP32 보드 2개가 방을 가로질러 WiFi 패킷을 주고받습니다(초당 약 47프레임, 서브캐리어 약 120개). 사람이 움직이면 신호가 바뀝니다.",
+        "9프레임 중앙값 필터로 손상된 패킷을 제거하고, 짧은 빈 방 캘리브레이션으로 방마다 임계값을 정합니다.",
+        "WiFi 특징 2가지: 움직임(프레임 간 변화)과 지문(빈 방 패턴과의 거리). 지문은 움직이지 않는 사람의 정보도 유지합니다.",
+        "세 번째 보드에 연결한 LD2410C 24GHz 레이더(직접 작성한 UART-USB 브리지 펌웨어)가 약 6m까지 움직이는/정지한 사람을 감지하고 입실·퇴실 이벤트를 만듭니다.",
+        "캘리브레이션, 이벤트 기록, CSV 저장이 되는 실시간 웹 대시보드. 카메라는 데이터 라벨링용 녹화에만 쓰고 실제 운영에는 쓰지 않습니다.",
+        "현재 상태: 움직임, 재실, 퇴실 감지는 동작합니다. 낙상 감지는 개발 중이고 지문 결과는 한 세션 기준이라 아직 검증되지 않았습니다.",
+      ],
+    },
+    images: [
+      { src: img("wiguard", "csi_demo.png"), cap: { en: "WiFi signal and motion for walking, standing, sitting and lying", ko: "걷기, 서기, 앉기, 눕기의 WiFi 신호와 움직임" } },
+      { src: img("wiguard", "still_vs_walking.png"), cap: { en: "Standing still, then walking: per-second variability", ko: "정지 후 걷기: 초당 변동성" } },
+      { src: img("wiguard", "radar_wiring.jpg"), cap: { en: "Radar wired to the ESP32 bridge board", ko: "ESP32 브리지 보드에 연결한 레이더" } },
+    ],
+    links: [{ label: "GitHub", href: "https://github.com/askarbekkk/wiguard" }],
+  },
+  {
     slug: "ai-job-assistant",
     badge: { en: "Full-stack AI", ko: "풀스택 AI" },
     title: { en: "AI Job & Internship Matcher", ko: "AI 채용·인턴십 매칭" },
