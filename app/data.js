@@ -192,10 +192,10 @@ export const aiProjects = [
       en: "Vehicle detection, tracking and counting on live city CCTV, trained on a dataset we built from scratch.",
       ko: "직접 구축한 데이터셋으로 학습해 실시간 도시 CCTV에서 차량을 탐지·추적·집계합니다.",
     },
-    tags: ["YOLOv8", "SAHI", "DeepSORT", "PyTorch", "OpenCV", "Roboflow", "FastAPI"],
+    tags: ["YOLO11", "DeepSORT", "SAHI", "PyTorch", "OpenCV", "Roboflow", "FastAPI"],
     results: [
       { en: "~4,000 images annotated by hand", ko: "이미지 약 4,000장 직접 라벨링" },
-      { en: "Fine-tuned YOLOv8 on a university GPU cluster", ko: "대학 GPU 클러스터에서 YOLOv8 파인튜닝" },
+      { en: "YOLO11 fine-tuned on a university GPU server: best mAP50 0.81", ko: "대학 GPU 서버에서 YOLO11 파인튜닝: 최고 mAP50 0.81" },
       { en: "Line-crossing counts per class and camera", ko: "클래스·카메라별 가상선 통과 집계" },
     ],
     problem: {
@@ -204,14 +204,14 @@ export const aiProjects = [
     },
     points: {
       en: [
-        "My part: a scraper that saved a frame from public road cameras every 5 seconds, ~4,000 hand-annotated images, YOLOv8 fine-tuning, and the YOLOv8 + DeepSORT detection-and-tracking pipeline with CUDA → CPU fallback.",
-        "SAHI sliced inference (512 px tiles) recovers small vehicles far from the camera.",
-        "Counts are served by a FastAPI backend to a Svelte dashboard with live video.",
+        "My part: a scraper that saved a frame from public road cameras every 5 seconds, ~4,000 hand-annotated images, YOLO11 fine-tuning (4 classes: car, bus, small and big truck), and the YOLO11 + DeepSORT detection-and-tracking pipeline with CUDA → CPU fallback.",
+        "Tested SAHI sliced inference for small, distant vehicles in experiments; the final pipeline runs YOLO11 directly.",
+        "Teammates built the FastAPI backend and Svelte dashboard; my model and counts feed them with live video.",
       ],
       ko: [
-        "담당 업무: 공공 도로 카메라에서 5초마다 프레임을 저장하는 스크레이퍼, 이미지 약 4,000장 수작업 라벨링, YOLOv8 파인튜닝, CUDA → CPU 자동 전환이 되는 YOLOv8 + DeepSORT 탐지·추적 파이프라인.",
-        "SAHI 분할 추론(512px 타일)으로 카메라에서 먼 작은 차량도 탐지합니다.",
-        "집계 결과는 FastAPI 백엔드를 통해 실시간 영상이 있는 Svelte 대시보드로 제공됩니다.",
+        "담당 업무: 공공 도로 카메라에서 5초마다 프레임을 저장하는 스크레이퍼, 이미지 약 4,000장 수작업 라벨링, YOLO11 파인튜닝(승용차, 버스, 소형·대형 트럭 4개 클래스), CUDA → CPU 자동 전환이 되는 YOLO11 + DeepSORT 탐지·추적 파이프라인.",
+        "카메라에서 먼 작은 차량을 위해 SAHI 분할 추론을 실험했고, 최종 파이프라인은 YOLO11을 직접 사용합니다.",
+        "FastAPI 백엔드와 Svelte 대시보드는 팀원이 만들었고, 제 모델과 집계 결과가 실시간 영상과 함께 연결됩니다.",
       ],
     },
     images: [
@@ -568,7 +568,7 @@ export const education = {
 };
 
 export const skills = [
-  { k: { en: "AI / ML", ko: "AI / ML" }, v: "PyTorch · sentence-transformers · Hugging Face · LangChain · YOLOv8 · DeepSORT · OpenCV · LightGBM · scikit-learn · pandas" },
+  { k: { en: "AI / ML", ko: "AI / ML" }, v: "PyTorch · sentence-transformers · Hugging Face · LangChain · YOLO11 · DeepSORT · OpenCV · LightGBM · scikit-learn · pandas" },
   { k: { en: "LLM systems", ko: "LLM 시스템" }, v: "RAG · hybrid search (BM25 + vectors) · reranking · ChromaDB · Ollama · Gemini / Claude / OpenAI APIs · structured output · evaluation" },
   { k: { en: "Software", ko: "소프트웨어" }, v: "Python · TypeScript · JavaScript · SQL · FastAPI · NestJS · React · Next.js · React Native · Streamlit" },
   { k: { en: "Tools", ko: "도구" }, v: "Git · Linux · Docker · Playwright · GitHub Actions · Vercel · Roboflow · Azure" },
