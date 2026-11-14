@@ -11,12 +11,7 @@
   --font-d: var(--font-display), "Segoe UI", system-ui, sans-serif;
   --font-b: var(--font-body), "Segoe UI", "Apple SD Gothic Neo", system-ui, sans-serif;
   --font-m: var(--font-mono), ui-monospace, Consolas, monospace;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #0d141d; --surface: #141d29; --ink: #e7edf5; --muted: #98a4b5; --line: #263243;
-    --accent: #8ea2ff; --accent-soft: #1d2747; --mark: #fb923c; color-scheme: dark;
-  }
+  color-scheme: light;
 }
 
 * { box-sizing: border-box; }
