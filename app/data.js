@@ -218,7 +218,7 @@ export const aiProjects = [
       { src: img("smart-traffic", "detection_result.png"), cap: { en: "Our trained model on a city-camera frame", ko: "도시 카메라 프레임에 적용한 학습 모델" } },
       { src: img("smart-traffic", "architecture.png"), cap: { en: "Data, training and live pipeline", ko: "데이터·학습·실시간 파이프라인" } },
     ],
-    links: [],
+    links: [{ label: "GitHub", href: "https://github.com/askarbekkk/smart-traffic-monitoring" }],
   },
   {
     slug: "wiguard",
